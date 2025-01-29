@@ -4,7 +4,7 @@ module.exports = async (registrationData) => {
 
     let { agentName, agentId, password, countryCode, address } = registrationData;
 
-    let { city, district, state, pin } = address;
+    let { city, district, state, pinCode } = address;
 
     let agentData = {};
     let errors = {
@@ -56,7 +56,7 @@ module.exports = async (registrationData) => {
         errors.numError += 1;
     }
     // validate address
-    if (!city || !district || !state || !pin) {
+    if (!city || !district || !state || !pinCode) {
         errors.address = "Address fields needs to be filled";
         errors.numError += 1;
     }

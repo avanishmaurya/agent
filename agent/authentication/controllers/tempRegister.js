@@ -26,7 +26,6 @@ module.exports = async (req, res) => {
         }
 
         // check whether the agent is already exist or not
-
         const existingAgent = await getExistingAgent(agentData.agentId);
 
         if (!existingAgent.success) {
