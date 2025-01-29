@@ -4,13 +4,13 @@ module.exports = async (agentId, countryCode) => {
 
     const id = String(agentId);
     const country = "IN"
-    countryCode = String(countryCode)
+    //countryCode = String(countryCode)
     
 
     //Check if it is a valid mobile number
     const phoneNumber = parsePhoneNumberFromString(id, country);
     if (phoneNumber && phoneNumber.isValid()) {
-        return { isValid: true, number: phoneNumber.number };
+        return { isValid: true, agentId: phoneNumber.number };
     }else{
         return { type: "OTHER", isValid: false, userId: id };
     }

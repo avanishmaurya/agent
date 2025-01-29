@@ -36,11 +36,11 @@ module.exports = async (registrationData) => {
         agentData.phone = "";
         agentData.agentId = "";
 
-        let agentIdValidation = await validateAgentId(agentId, countryCode);
+        let agentIdValidation = await validateAgentId(agentId);
 
         if (agentIdValidation.isValid) {
-            agentData.phone = agentIdValidation.number;
-            agentData.agentId = agentIdValidation.number;
+            agentData.phone = agentIdValidation.agentId;
+            agentData.agentId = agentIdValidation.agentId;
         } else {
             errors.agentId = "AgentId must be a valid mobile number";
             errors.numError += 1;
