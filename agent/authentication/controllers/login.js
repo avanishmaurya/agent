@@ -90,7 +90,7 @@ module.exports = async (req, res) => {
                     a_token,
                     agentUid: agentData.agent_uid,
                     agentId: agentData.agent_id,
-                    agentName: agentData.agentName,
+                    agentName: agentData.agentname,
                     email: agentData.email,
                     phone: agentData.phone_number,
                     address: agentData.address,
