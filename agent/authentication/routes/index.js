@@ -9,6 +9,7 @@ const forgotPassword = require("../controllers/forgotPassword")
 const changeForgotPassword = require("../controllers/changeForgotPassword")
 const resendOtp = require("../controllers/resendOtp")
 const getAccessToken = require("../controllers/getAccessToken")
+const getAgentStatus = require("../controllers/getAgentStatus")
 const logout = require("../controllers/logout")
 
 
@@ -20,6 +21,7 @@ router.post("/forgot-password",forgotPassword)
 router.post("/change-forgot-password",changeForgotPassword)
 router.post("/resend-otp",resendOtp)
 router.get("/access-token",getAccessToken)
+router.get("/agent-status",getAgentStatus)
 router.get("/logout",logout)
 
 module.exports = router;
