@@ -51,6 +51,7 @@ module.exports = async (agentId, agentUid) => {
             data: {
                 agentId,
                 otpToken,
+                agentUid
             },
         };
     } catch (error) {
