@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 /////// controller files /////////////////////
-const registerAgent = require("../controllers/register");
+const register = require("../controllers/register");
 const tempRegister = require("../controllers/tempRegister")
 const login = require("../controllers/login")
 const forgotPassword = require("../controllers/forgotPassword")
@@ -13,7 +13,7 @@ const logout = require("../controllers/logout")
 
 
 ///// routes //////////////////////////////////
-router.post("/register", registerAgent);
+router.post("/register", register);
 router.post("/temp-register",tempRegister)
 router.post("/login",login)
 router.post("/forgot-password",forgotPassword)
