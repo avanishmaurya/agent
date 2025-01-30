@@ -10,7 +10,7 @@ module.exports = async (otp, otpToken, otpTokenPrev) => {
 
         // First verify the current OTP token
         try {
-            tokenResult = jwt.verify(otpToken, process.env.FAST2SMS_JWT_SECRET + otp);
+            tokenResult = jwt.verify(otpToken, process.env.OTP_JWT_SECRET + otp);
 
             isVerified = true;
             uuid = tokenResult.id
@@ -23,7 +23,7 @@ module.exports = async (otp, otpToken, otpTokenPrev) => {
         if (!isVerified && otpTokenPrev) {
 
             try {
-                tokenResult = jwt.verify(otpTokenPrev,process.env.FAST2SMS_JWT_SECRET + otp);
+                tokenResult = jwt.verify(otpTokenPrev,process.env.OTP_JWT_SECRET + otp);
 
                 isVerified = true;
                 uuid = tokenResult.id
