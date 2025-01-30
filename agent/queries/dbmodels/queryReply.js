@@ -11,7 +11,7 @@ module.exports = async (queryId, replyText) => {
 
         const valueAr = [queryId, replyText]
         const query = `UPDATE agent_management.agent_queries_tbl
-                            set query_reply = $2,
+                            set reply_text = $2,
                             replied_at = now()
                        WHERE 
                             query_id = $1

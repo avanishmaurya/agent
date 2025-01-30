@@ -8,18 +8,16 @@ module.exports = async (req, res) => {
     //     return res.status(401).json(resError401)
     // }
 
-
-    let queryId = !(req.auth) ? '' : req.auth.queryId
-    if (!queryId) {
-        return res.status(401).json(resError400)
-    }
+    // admin will reply to the query 
 
     const rb = req.body
     if (!rb)
         return res.status(400).json(resError400)
 
+    const queryId = rb.queryId
     const replyText = rb.replyText
-    if (!replyText) {
+
+    if (!queryId || !replyText) {
         return res.status(400).json(resError400)
     }
 
