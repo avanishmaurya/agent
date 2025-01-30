@@ -1,4 +1,4 @@
-const postFeedback = require("../dbmodels/postFeedback")
+const postQuery = require("../dbmodels/postQuery")
 const { resError400, resError401, resError500, resError599 } = require("../../../utils/resError")
 
 module.exports = async (req, res) => {
@@ -12,20 +12,20 @@ module.exports = async (req, res) => {
     if (!rb)
         return res.status(400).json(resError400)
 
-    const feedbackText = rb.feedbackText
-    const feedbackType = rb.feedbackType
-    if (!feedbackText || !feedbackType) {
+    const queryTitle = rb.queryTitle
+    const queryDescription = rb.queryDescription
+    if (!queryTitle || !queryDescription) {
         return res.status(400).json(resError400)
     }
 
     try {
 
-        const result = await postFeedback(agentUid, feedbackText, feedbackType)
+        const result = await postQuery(agentUid, queryTitle, queryDescription)
         if (result.success) {
             return res.status(200).json({
                 success: true,
                 data: result.data,
-                message: "Feedback posted successfully"
+                message: "Query posted successfully"
             })
         } else {
             return res.status(500).json(resError500)
@@ -35,5 +35,4 @@ module.exports = async (req, res) => {
         console.log("error : ", error);
         return res.status(599).json(resError599)
     }
-
 }

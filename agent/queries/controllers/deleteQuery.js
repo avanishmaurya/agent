@@ -1,5 +1,5 @@
-const { resError401, resError599 } = require("../../../utils/resError")
-const getFeedbacks = require("../dbmodels/getFeedback")
+const deleteQuery = require("../dbmodels/deleteQuery")
+const { resError401, resError599, resError400 } = require("../../../utils/resError")
 
 module.exports = async (req,res) =>{
 
@@ -8,9 +8,14 @@ module.exports = async (req,res) =>{
         return res.status(401).json(resError401)
     }
 
+    let queryId = !(req.params) ? '' : req.params.queryId
+    if(!queryId){
+        return res.status(400).json(resError400)
+    }
+
     try {
         
-        const result = await getFeedbacks(agentUid)
+        const result = await deleteQuery(queryId)
         if(result.success){
             return res.status(200).json({
                 success:true,
@@ -19,7 +24,7 @@ module.exports = async (req,res) =>{
         }else{
             return res.status(500).json({
                 success:false,
-                message:"Error while retrieving feedbacks"
+                message:"Error while deleting a query"
             })
         }
 

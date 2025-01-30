@@ -1,35 +1,31 @@
-const pool = require('../pgFeedbackConnect')
+const pool = require('../pgPaymentConnect')
 
 module.exports = async (agentUid) => {
-
     const client = await pool.connect()
     if (!client) {
         return new Error("Database connection failed")
     }
 
     try {
+
+        const valueAr = [agentUid];
        
-        const valueAr = [agentUid]
-        const query = `SELECT *
-                       FROM agent_management.agent_feedback_tbl
-                       WHERE
-                           agent_uid=$1;
-                        `
+        // Construct the SQL query with the escaped agent_uid
+        const query = `SELECT * FROM use`;
 
         const data = await client.query(query, valueAr);
-
         return {
             success: true,
             data: data.rows
         }
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
         return {
             success: false,
             message: error.message
         };
     } finally {
-        client.release();
+        client.release()
     }
 };

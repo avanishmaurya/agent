@@ -1,6 +1,6 @@
-const pool = require('../pgFeedbackConnect')
+const pool = require('../pgQueriesConnect.js')
 
-module.exports = async (agentUid) => {
+module.exports = async (queryId, replyText) => {
 
     const client = await pool.connect()
     if (!client) {
@@ -8,19 +8,20 @@ module.exports = async (agentUid) => {
     }
 
     try {
-       
-        const valueAr = [agentUid]
-        const query = `SELECT *
-                       FROM agent_management.agent_feedback_tbl
-                       WHERE
-                           agent_uid=$1;
+
+        const valueAr = [queryId, replyText]
+        const query = `UPDATE agent_management.agent_queries_tbl
+                            set query_reply = $2,
+                            replied_at = now()
+                       WHERE 
+                            query_id = $1
+                        RETURNING *;
                         `
 
         const data = await client.query(query, valueAr);
-
         return {
             success: true,
-            data: data.rows
+            data: data.rows[0]
         }
 
     } catch (error) {

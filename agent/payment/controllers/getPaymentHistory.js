@@ -1,5 +1,5 @@
+const getPaymentHistory = require("../dbmodels/getPaymentHistory")
 const { resError401, resError599 } = require("../../../utils/resError")
-const getFeedbacks = require("../dbmodels/getFeedback")
 
 module.exports = async (req,res) =>{
 
@@ -10,7 +10,7 @@ module.exports = async (req,res) =>{
 
     try {
         
-        const result = await getFeedbacks(agentUid)
+        const result = await getPaymentHistory(agentUid)
         if(result.success){
             return res.status(200).json({
                 success:true,
@@ -19,7 +19,7 @@ module.exports = async (req,res) =>{
         }else{
             return res.status(500).json({
                 success:false,
-                message:"Error while retrieving feedbacks"
+                message:"Error while retrieving payment history"
             })
         }
 

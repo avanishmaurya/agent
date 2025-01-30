@@ -1,4 +1,4 @@
-const pool = require('../pgFeedbackConnect')
+const pool = require('../pgQueriesConnect')
 
 module.exports = async (agentUid) => {
 
@@ -11,7 +11,7 @@ module.exports = async (agentUid) => {
        
         const valueAr = [agentUid]
         const query = `SELECT *
-                       FROM agent_management.agent_feedback_tbl
+                       FROM agent_management.agent_queries_tbl
                        WHERE
                            agent_uid=$1;
                         `

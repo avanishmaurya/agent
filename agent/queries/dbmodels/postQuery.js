@@ -1,17 +1,17 @@
-const pool = require('../pgFeedbackConnect')
+const pool = require('../pgQueriesConnect.js')
 
-module.exports = async (agentUid,feedbackText, feedbackType) => {
+module.exports = async (agentUid, queryTitle, queryDescription) => {
 
     const client = await pool.connect()
     if (!client) {
         return new Error("Database connection failed")
     }
-    
+
     try {
 
-        const valueAr = [agentUid, feedbackText, feedbackType]
-        const query = `INSERT INTO agent_management.agent_feedback_tbl(
-                                  agent_uid, feedback_text, feedback_type
+        const valueAr = [agentUid, queryTitle, queryDescription]
+        const query = `INSERT INTO agent_management.agent_queries_tbl(
+                                  agent_uid, query_title, query_description
                             )
                         VALUES($1, $2, $3)
                         RETURNING *;
