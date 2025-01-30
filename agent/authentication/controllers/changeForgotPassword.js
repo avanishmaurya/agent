@@ -1,5 +1,5 @@
 const { resError400, resError500, resError599 } = require("../../../utils/resError")
-const verifyOtp = require("../utils/otp/validateOtp")
+const verifyOtp = require("../../utils/otp/validateOtp")
 const getAgentInfo = require("../dbmodels/getAgentInfo")
 const { hashPassword } = require("../utils/passwordHash")
 const changePassword = require("../dbmodels/changePassword")

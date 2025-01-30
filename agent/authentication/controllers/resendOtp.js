@@ -1,5 +1,5 @@
 const { resError400, resError599 } = require("../../../utils/resError")
-const sendMobileOtp = require("../utils/otp/sendMobileOtp");
+const sendMobileOtp = require("../../utils/otp/sendMobileOtp");
 
 module.exports = async (req, res) => {
     let rb = req.body;

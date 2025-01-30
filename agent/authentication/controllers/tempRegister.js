@@ -3,7 +3,7 @@ const validateRegistration = require("../utils/validation/validateRegistration")
 const getExistingAgent = require("../dbmodels/getExistingAgent");
 const { hashPassword } = require("../utils/passwordHash");
 const temporaryRegister = require("../dbmodels/temporaryRegister");
-const sendMobileOTP = require("../utils/otp/sendMobileOtp");
+const sendMobileOTP = require("../../utils/otp/sendMobileOtp");
 
 module.exports = async (req, res) => {
 
