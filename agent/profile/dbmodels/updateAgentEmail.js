@@ -17,7 +17,8 @@ module.exports = async (agentUid,email) => {
                          SET  email = $2,
                               email_verified = 't'
                          WHERE  
-                            agent_uid = $1 ;
+                            agent_uid = $1 
+                        RETURNING agent_uid,email,email_verified;
                         `
 
         const data = await client.query(query, valueAr)

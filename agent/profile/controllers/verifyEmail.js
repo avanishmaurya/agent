@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
             let otp = await generateOTP(100000, 999999)
             console.log("otp : ",otp);   ///////////// to be removed
 
-            let secret = process.env.FAST2SMS_JWT_SECRET + otp;
+            let secret = process.env.OTP_JWT_SECRET + otp;
             
                 let otpToken = jwt.sign({ id: agentUid, userId: agentId }, secret, {
                     expiresIn: process.env.OTP_TOKEN_EXPIRE,
