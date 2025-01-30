@@ -80,8 +80,8 @@ module.exports = async (req, res) => {
             res.cookie("r_t", r_token, {
                 maxAge: 730 * 24 * 3600000,
                 httpOnly: true,
-                sameSite: "none",
-                secure: true,
+                // sameSite: "none",
+                // secure: true,
             });
 
             return res.status(200).json({

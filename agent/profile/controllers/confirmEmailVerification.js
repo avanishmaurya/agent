@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
         if(result.success){
             return res.status(200).json({
                 success:true,
+                data:result.data,
                 message:"Email verified successfully"
             })
         }else{
