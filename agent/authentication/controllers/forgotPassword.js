@@ -1,7 +1,7 @@
 const { resError400, resError599 } = require("../../../utils/resError")
 const getActiveAgent = require("../dbmodels/getActiveAgent")
 const getAgentData = require("../dbmodels/getAgentData")
-const sendMobileOtp = require("../utils/otp/sendMobileOtp")
+const sendMobileOtp = require("../../utils/otp/sendMobileOtp")
 const validateAgentId = require("../utils/validation/validateAgentId")
 
 

@@ -1,5 +1,5 @@
 const { resError400, resError500, resError401, resError599 } = require("../../../utils/resError")
-const verifyOtp = require("../utils/otp/validateOtp");
+const verifyOtp = require("../../utils/otp/validateOtp");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
 const registerAgent = require("../dbmodels/registerAgent");

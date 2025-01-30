@@ -1,13 +1,13 @@
 const pool = require('../pgAuthAgentConnect')
 
-module.exports = async (user) => {
+module.exports = async (agent) => {
 
     const client = await pool.connect()
     if (!client) {
         return new Error("Database connection failed")
     }
 
-    const { agentName, agentId, password, phone, countryCode,address } = user
+    const { agentName, agentId, password, phone, countryCode,address } = agent
 
     try {
 
