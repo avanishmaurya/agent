@@ -1,7 +1,7 @@
 const validator = require("validator");
 const { resError400, resError401, resError599 } = require("../../../utils/resError")
 const sendEmailOtp = require("../../utils/otp/sendEmailOtp")
-const generateOTP = require("../utils/otp/generateOtp")
+const generateOTP = require("../../utils/otp/generateOtp")
 const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv")
 dotenv.config()
