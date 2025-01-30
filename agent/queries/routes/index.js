@@ -8,7 +8,7 @@ const queryReply = require('../controllers/queryReply')
 
 router.post("/", postQuery)
 router.get("/", getQueries)
-router.delete("/", deleteQuery)
+router.delete("/:queryId", deleteQuery)
 router.put("/reply", queryReply)
 
 

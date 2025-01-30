@@ -1,5 +1,5 @@
 const { resError401, resError599 } = require("../../../utils/resError")
-const getFeedbacks = require("../dbmodels/getFeedback")
+const getFeedbacks = require("../dbmodels/getFeedbacks")
 
 module.exports = async (req,res) =>{
 
