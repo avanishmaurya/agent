@@ -1,5 +1,5 @@
 const getReferredUsersSubDetails = require("../dbmodels/getReferredUsersSubDetails")
-const { resError401, resError599 } = require("../../../utils/resError")
+const { resError401, resError599, resError500 } = require("../../../utils/resError")
 const calculateCommission = require('../utils/calculateCommission')
 
 module.exports = async (req, res) => {
@@ -22,12 +22,11 @@ module.exports = async (req, res) => {
                     totals: result2.data,
                     message: "Referred users subscription details fetched successfully"
                 })
-            }///////else remaining 
+            } else {
+                return res.status(500).json(resError500)
+            }
         } else {
-            return res.status(500).json({
-                success: false,
-                message: "Error while fetching, referred users subscription details"
-            })
+            return res.status(500).json(resError500)
         }
 
     } catch (error) {
