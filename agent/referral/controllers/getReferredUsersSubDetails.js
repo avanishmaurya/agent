@@ -14,12 +14,12 @@ module.exports = async (req, res) => {
         let result = await getReferredUsersSubDetails(agentUid)
         if (result.success && result.data) {
             // commission added 
-            const result2 = await calculateCommission(result.data)
+            const result2 =  calculateCommission(result.data)
             if (result2.success) {
                 return res.status(200).json({
                     success: true,
                     data: result.data,
-                    totals: result2.data,
+                    total: result2.data,
                     message: "Referred users subscription details fetched successfully"
                 })
             } else {
