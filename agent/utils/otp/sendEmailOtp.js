@@ -16,8 +16,8 @@ module.exports = async (email, otp) => {
     message = {
         from: process.env.EMAIL_SENDER,
         to: [email],
-        subject: "Lulugram",
-        text: `Your OTP for Lulugram is: ${otp}`,
+        subject: "Lulugram email verification",
+        text: `Your OTP for Lulugram email verification is: ${otp}`,
     }
 
     try {
