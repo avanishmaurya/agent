@@ -13,10 +13,6 @@ module.exports = async (req, res) => {
         
         const result = await getAgentBankDetails(agentId)
 
-        console.log("result : ",result);
-        console.log("data : ",Boolean(result.data));
-        
-        
         if(result.success && result.data){
             return res.status(200).json({
                 success:true,

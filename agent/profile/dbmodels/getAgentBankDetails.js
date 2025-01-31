@@ -24,7 +24,7 @@ module.exports = async (agentId) => {
 
         return {
             success: true,
-            data: data.rows[0]
+            data: data.rows
         }
 
     } catch (error) {
