@@ -90,7 +90,7 @@ module.exports = async (req, res) => {
                     agentUid: agentData.agent_uid,
                     agentEmail: agentData.email,
                     agentPhone: agentData.phone_number,
-                    agentNumber: agentData.agent_referal_code,
+                    referralCode: agentData.agent_referal_code,
                     countryCode: agentData.country_code,
                     address: agentData.address,
                     expiresIn: process.env.ACCESS_TOKEN_EXPIRE,
