@@ -30,8 +30,8 @@ module.exports = async (agentId, agentUid) => {
     try {
         const data = {
             route: "dlt",
-            sender_id: "VOCROS",
-            message: "178554",
+            sender_id: "GRM9LK",
+            message: "179337",
             variables_values: `${otp}`,
             flash: 0,
             numbers: `${number}`,

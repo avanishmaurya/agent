@@ -3,19 +3,23 @@ module.exports = async () => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const digits = "0123456789";
 
-    let result = [];
-    for (let i = 0; i < 3; i++) {
-        result.push(letters.charAt(Math.floor(Math.random() * letters.length)));
+    let result = ["A"];
+    let randChars = []
+    let randNums = []
+    for (let i = 0; i < 4; i++) {
+        randChars.push(letters.charAt(Math.floor(Math.random() * letters.length)));
     }
-
-    for (let i = 0; i < 5; i++) {
-        result.push(digits.charAt(Math.floor(Math.random() * digits.length)));
+    await fisherYatesShuffle(randChars)
+    
+    for (let i = 0; i < 4; i++) {
+        randNums.push(digits.charAt(Math.floor(Math.random() * digits.length)));
     }
+    await fisherYatesShuffle(randNums)
+   
+    const randCharNum = randChars.concat(randNums)
+    let result2 = result.concat(randCharNum)
 
-    result = await fisherYatesShuffle(result)
-
-    result.unshift('A') //// Adding 'U' in the begining because User number starts with "U" for users
-    return result.join('');
+    return result2.join('');
 
 }
 
