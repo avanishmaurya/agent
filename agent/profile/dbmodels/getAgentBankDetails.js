@@ -17,7 +17,7 @@ module.exports = async (agentId) => {
                       FROM
                           agents_auth.agent_bank_tbl
                       WHERE
-                          agent_id = $1;
+                          agent_id = $1 AND status = 'active';
                       `
 
         const data = await client.query(query, valueAr)

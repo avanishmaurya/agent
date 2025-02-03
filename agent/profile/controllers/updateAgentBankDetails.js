@@ -1,6 +1,6 @@
-const { resError401, resError400, resError599 } = require("../../../utils/resError")
-const addAgentBankDetails = require("../dbmodels/addAgentBankDetails")
+const { resError401, resError400, resError500, resError599 } = require("../../../utils/resError")
 const verifyOtp = require("../../utils/otp/validateOtp")
+const updateAgentBankDetails = require("../dbmodels/updateAgentBankDetails")
 
 module.exports = async (req, res) => {
 
@@ -43,22 +43,21 @@ module.exports = async (req, res) => {
     }
 
     try {
+        
+        const updateBankDetails = await updateAgentBankDetails(bankDetails)
 
-        const result = await addAgentBankDetails(bankDetails)
-
-        if (result.success) {
+        if(updateBankDetails.success){
             return res.status(200).json({
-                success: true,
-                message: "Bank details added successfully"
+                success:true,
+                message:"Bank details updated successfully"
             })
-        } else {
-            return res.status(500).json({
-                success: false,
-                message: "Error while adding bank details"
-            })
+        }else{
+            return res.status(500).json(resError500)
         }
+
     } catch (error) {
-        console.log("error : ", error);
-        return res.status(599).json(resError599)
+        console.log("error : ",error);
+        res.status(599).json(resError599)
+        
     }
 }
