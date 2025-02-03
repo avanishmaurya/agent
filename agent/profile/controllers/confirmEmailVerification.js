@@ -37,11 +37,11 @@ module.exports = async (req, res) => {
     try {
         
         const result = await updateAgentEmail(agentUid,email)
-
+        
         if(result.success){
             return res.status(200).json({
                 success:true,
-                data:result.data,
+                data:result.data.email,
                 message:"Email verified successfully"
             })
         }else{

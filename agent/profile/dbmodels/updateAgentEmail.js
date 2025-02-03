@@ -1,6 +1,6 @@
 const pool = require('../pgProfileAgentConnect')
 
-module.exports = async (agentUid,email) => {
+module.exports = async (agentUid, email) => {
 
     const client = await pool.connect()
     if (!client) {
@@ -9,17 +9,28 @@ module.exports = async (agentUid,email) => {
 
     try {
 
-        const valueAr = [agentUid,email]
+        const valueAr = [agentUid, email]
 
 
-        const query = `UPDATE   
-                            agents_auth.agents_tbl 
-                         SET  email = $2,
-                              email_verified = 't'
-                         WHERE  
-                            agent_uid = $1 
-                        RETURNING agent_uid,email,email_verified;
-                        `
+        const query = `WITH old_email AS (
+                            SELECT email, prev_emails
+                            FROM agents_auth.agents_tbl
+                            WHERE agent_uid = $1
+                        )
+                        UPDATE agents_auth.agents_tbl
+                        SET  
+                            email = $2,
+                            prev_emails = COALESCE(prev_emails, '[]'::JSONB) || 
+                                          jsonb_build_array(
+                                            jsonb_build_object('prev_email', (SELECT email FROM old_email), 'changed_at', NOW())
+                                          ),
+                            email_verified = 't'
+                        WHERE  
+                             agent_uid = $1
+                        RETURNING agent_uid, email, prev_emails, email_verified;
+
+                       `
+
 
         const data = await client.query(query, valueAr)
 
