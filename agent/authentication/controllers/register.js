@@ -88,7 +88,7 @@ module.exports = async (req, res) => {
                     agentName: agentData.agentname,
                     agentId: agentData.agent_id,
                     agentUid: agentData.agent_uid,
-                    agentEmail: agentData.email,
+                    email: agentData.email,
                     agentPhone: agentData.phone_number,
                     referralCode: agentData.agent_referal_code,
                     countryCode: agentData.country_code,
